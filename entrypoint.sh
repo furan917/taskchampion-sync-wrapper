@@ -10,6 +10,11 @@ mkdir -p "$DATA_DIR"
 chown -R "$PUID:$PGID" "$DATA_DIR"
 chmod -R 700 "$DATA_DIR"
 
+if [ -z "$CLIENT_ID" ]; then
+    echo "ERROR: CLIENT_ID is required. Generate a UUID with 'uuidgen' and set it in the container configuration."
+    exit 1
+fi
+
 set -- --listen "$LISTEN" --data-dir "$DATA_DIR"
 
 # CLIENT_ID accepts a single UUID or a comma-separated list for multiple devices

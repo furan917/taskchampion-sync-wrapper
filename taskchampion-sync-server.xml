@@ -9,7 +9,7 @@
   <Privileged>false</Privileged>
   <Support>https://forums.unraid.net/topic/XXXXXX-support-taskchampion-sync-server/</Support>
   <Project>https://github.com/GothenburgBitFactory/taskchampion-sync-server</Project>
-  <Overview>TaskChampion Sync Server is the official sync backend for Taskwarrior 3.x. It implements the TaskChampion sync protocol, allowing tasks to be synchronised across multiple devices. Task data is encrypted client-side; the server never sees plaintext. Note: the upstream taskchampion-sync-server provides no HTTP authentication by design — access control is via UUID allowlisting only. For internet-facing deployments, place this behind a reverse proxy with an auth layer (e.g. Nginx Proxy Manager with HTTP Basic Auth).</Overview>
+  <Overview>TaskChampion Sync Server is the official sync backend for Taskwarrior 3.x. It allows tasks to be synchronised across multiple devices. Task data is encrypted client-side — the server never sees plaintext. IMPORTANT: you must set Client ID(s) before the container will start. The upstream taskchampion-sync-server provides no HTTP authentication by design; access control is via UUID allowlisting only. For internet-facing deployments, place this behind a reverse proxy with HTTP Basic Auth (e.g. Nginx Proxy Manager).</Overview>
   <Category>Productivity: Tools:</Category>
   <WebUI>http://[IP]:[PORT:8007]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/furan917/taskchampion-sync-wrapper/main/taskchampion-sync-server.xml</TemplateURL>
@@ -20,7 +20,7 @@
   <DateInstalled/>
   <DonateText/>
   <DonateLink/>
-  <Requires>Clients must use Taskwarrior 3.0 or any app implementing the TaskChampion sync protocol. Each client needs a unique UUID (generate with `uuidgen`) and a shared encryption secret.</Requires>
+  <Requires>Clients must use Taskwarrior 3.0 or any app implementing the TaskChampion sync protocol. Before starting the container, generate a UUID for each device with `uuidgen` and add them all to the Client ID(s) field. Each Taskwarrior client also needs a shared encryption secret (never sent to the server).</Requires>
 
   <!-- Port -->
   <Config Name="WebUI Port" Target="8080" Default="8007" Mode="tcp" Description="Host port mapped to the container's internal port 8080. Default is 8007 to avoid conflicts with common Unraid services." Type="Port" Display="always" Required="true" Mask="false">8007</Config>
@@ -33,7 +33,7 @@
   <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="GID the server process runs as. Defaults to Unraid's users group (100). Change to match your group ID on other systems (run `id` to find it)." Type="Variable" Display="always" Required="false" Mask="false">100</Config>
 
   <!-- Access control -->
-  <Config Name="Client ID(s)" Target="CLIENT_ID" Default="" Mode="" Description="UUID(s) allowed to sync. Comma-separated for multiple devices (e.g. uuid1,uuid2). If left empty, any client can sync — set this if the server is reachable from outside your LAN. Generate a UUID with `uuidgen`." Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="Client ID(s)" Target="CLIENT_ID" Default="" Mode="" Description="Required. UUID(s) allowed to sync. Comma-separated for multiple devices (e.g. uuid1,uuid2). Generate a UUID with `uuidgen` on Linux/Mac or use an online generator. The container will not start without this." Type="Variable" Display="always" Required="true" Mask="false"></Config>
   <Config Name="No Create Clients" Target="NO_CREATE_CLIENTS" Default="false" Mode="" Description="Set to true to prevent new clients from registering after initial setup. Only useful after all your devices have synced at least once — enabling this before first sync will block even allowed clients." Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
 
   <!-- Optional: override listen address/port inside the container -->
