@@ -1,0 +1,8 @@
+<CommunityApplications>
+  <Profile>
+    Wrapper image for the official TaskChampion Sync Server, adding PUID/PGID support and secure defaults for Unraid. Maintained by furan917.
+  </Profile>
+  <Icon>https://raw.githubusercontent.com/GothenburgBitFactory/taskwarrior/develop/doc/misc/tw-xl.png</Icon>
+  <WebPage>https://github.com/furan917/taskchampion-sync-wrapper</WebPage>
+  <Forum>XXXXXX</Forum>
+</CommunityApplications>
