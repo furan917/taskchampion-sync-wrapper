@@ -1,0 +1,15 @@
+services:
+  taskchampion-sync-server:
+    image: ghcr.io/furan917/taskchampion-sync-server:latest
+    container_name: taskchampion-sync-server
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - LISTEN=0.0.0.0:8080
+      - CLIENT_ID=       # comma-separated UUIDs, e.g. uuid1,uuid2 — leave empty to allow all
+      - NO_CREATE_CLIENTS=false  # set to true after all devices have synced once
+    volumes:
+      - ./data:/var/lib/taskchampion-sync-server
+    ports:
+      - 8080:8080
+    restart: unless-stopped
