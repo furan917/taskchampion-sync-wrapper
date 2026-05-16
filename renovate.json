@@ -3,7 +3,7 @@
   "extends": ["config:recommended"],
   "packageRules": [
     {
-      "matchManagers": ["dockerfile"],
+      "matchManagers": ["dockerfile", "github-actions"],
       "automerge": false,
       "addLabels": ["upstream-update"]
     }
