@@ -13,7 +13,7 @@
   <Category>Productivity: Tools:</Category>
   <WebUI>http://[IP]:[PORT:8007]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/furan917/taskchampion-sync-wrapper/main/taskchampion-sync-server.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/GothenburgBitFactory/taskwarrior/develop/doc/misc/tw-xl.png</Icon>
+  <Icon>https://avatars.githubusercontent.com/u/7008500</Icon>
   <ExtraParams>--restart=unless-stopped</ExtraParams>
   <PostArgs/>
   <CPUset/>
