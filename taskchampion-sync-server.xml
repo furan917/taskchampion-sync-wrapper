@@ -11,7 +11,7 @@
   <Project>https://github.com/GothenburgBitFactory/taskchampion-sync-server</Project>
   <Overview>TaskChampion Sync Server is the official sync backend for Taskwarrior 3.x. It allows tasks to be synchronised across multiple devices. Task data is encrypted client-side — the server never sees plaintext. IMPORTANT: you must set Client ID(s) before the container will start. The upstream taskchampion-sync-server provides no HTTP authentication by design; access control is via UUID allowlisting only. For internet-facing deployments, place this behind a reverse proxy with HTTP Basic Auth (e.g. Nginx Proxy Manager).</Overview>
   <Category>Productivity: Tools:</Category>
-  <WebUI>http://[IP]:[PORT:8007]/</WebUI>
+  <WebUI>http://[IP]:[PORT:8080]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/furan917/taskchampion-sync-wrapper/main/taskchampion-sync-server.xml</TemplateURL>
   <Icon>https://avatars.githubusercontent.com/u/7008500</Icon>
   <ExtraParams>--restart=unless-stopped</ExtraParams>
